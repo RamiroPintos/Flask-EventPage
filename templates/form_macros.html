@@ -1,0 +1,34 @@
+<!-- Macro that is responsible for displaying validation errors -->
+{% macro show_error(field) %}
+	{% if field.errors %} <!--Si exist errors -->
+	  <div class="alert alert-danger" role="alert">
+	  {% for error in field.errors %} <!--go through errors-->
+	   	{{ error }}<br><!--Show error -->
+	  {% endfor %}
+	  </div>
+	{% endif %}
+{% endmacro %}
+
+<!-- Macro that is responsible for displaying the fields of the form -->
+{% macro show_field(field) %}
+	{{ field.label }} <!-- Show label -->
+	{{ field(**kwargs)|safe }} <!-- Show field -->
+	{{show_error(field)}}  <!-- Call macro showing error -->
+{% endmacro %}
+
+<!-- Macro that is responsible for displaying the type radio fields of the form -->
+{% macro show_field_radius(field) %}
+	{{ field.label }}
+	<br/>
+	{% for subfield in field %} <!--Go through each of the options -->
+			{{ subfield }}  <!-- Show option -->
+	  		{{ subfield.label }} <!-- Show label -->
+	{% endfor %}
+	{{show_error(field)}} <!-- Call macro showing error -->
+{% endmacro %}
+
+
+<!-- Macro that is responsible for displaying the fields type submit form -->
+{% macro show_field_submit(field) %}
+	{{ field(**kwargs)|safe }} <!-- Show field -->
+{% endmacro %}

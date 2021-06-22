@@ -1,0 +1,253 @@
+@font-face{
+	font-family:'Varela Round', sans-serif;
+	src: url(Varela.ttf);
+}
+
+.dropdown-submenu{
+    position: relative;
+}
+
+.dropdown-submenu .dropdown-menu{
+    top: 0;
+    left: 100%;
+    margin-top: 0px;
+}
+
+.imagen{
+	width:200px;
+	height:70px;
+	float: left;
+}
+
+.imagen-form{
+	width:400px;
+	height:100px;
+}
+
+.fondo-form{
+	background-image:url('../images/contact.jpg');
+	background-repeat: no-repeat;
+	background-size:cover;
+}
+
+.fondo{
+	background-image: url('../images/fondo.jpg');
+	background-repeat: repeat;
+	background-size:contain;
+}
+
+.fondo-com{
+	background-image:url('../images/coment.jpg');
+	background-repeat: no-repeat;
+	background-size:cover;
+}
+
+.fondo-eventos{
+	background-image:url('../images/fondo_misdark.jpg');
+	background-repeat: repeat;
+	background-size:contain;
+}
+
+.fondo-n{
+	background-color: black;
+}
+
+.fondo-b{
+	background-color: white;
+}
+
+.fondos{
+	background-color: #45b39d;
+}
+
+.navegador{
+	width: 100%;
+}
+
+.center{
+	text-align: center !important;
+}
+
+.name{
+	margin-top: 6px;
+	float:left;
+	font-family: 'Monoton', cursive;
+	color: white;
+	font-size: 50px;
+	text-align: center;
+}
+
+.eventos{
+	margin-top: 50px;
+	margin-bottom: 20px;
+	color: black;
+	font-family:'Varela Round', sans-serif;
+}
+
+.redondeo {
+	border-radius: 30px;
+	border:solid;
+}
+
+.espacio-btncenter{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.btn-event{
+	border-radius: 30px !important;
+	color: black; 
+	background-color:white;
+	margin-bottom: 10px;
+}
+
+.btn-formulario{
+	border-radius: 30px !important;
+	color: black; 
+	background-color:#45b39d;
+	margin-bottom: 10px;
+}
+
+.btn-azul{
+	border-radius: 30px !important;
+	color: black; 
+	background-color: #45b39d;
+}
+
+.button-blanc{
+	color: white !important;
+}
+
+.btn-ingresar{
+	margin-left: 40%;
+	color: white;
+	border-color: white;
+}
+
+.btn-registrarse{
+	margin-left: 33%;
+	border-color: white;
+}
+
+.inicio{
+	color: white;
+	font-family: 'Chewy', cursive;
+	font-size: 50px;
+	margin-top: 50px;
+}
+
+.botones-nav{
+	background-color:  #45b39d !important;
+	text-align:center;
+	width: 120px;
+	margin-right: 25px;
+	margin-left: 25px;
+	color: white;
+	border-radius: 40px !important;
+}
+
+.formulario{
+	margin-left: 100px;
+	font-family:'Varela Round', sans-serif;
+	display: block;
+}
+
+.text-fonttit{
+	font-family: 'Chewy', cursive;
+}
+
+.text-fontnorm{
+	font-family:'Varela Round', sans-serif;
+}
+
+.text-color{
+	color: #45b39d;
+}
+
+.altura{
+	margin-top: 50px;
+	margin-bottom: 20px;
+}
+
+.altura-center{
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.text-nosotros{
+	font-family:'Varela Round', sans-serif;
+	color: black;
+	padding-top:10px;
+}
+
+.text-formulario{
+	font-family:'Varela Round', sans-serif;
+	color:#45b39d;
+	font-weight:bold;
+	font-size: 20px;
+}
+
+.text-estado{
+	font-family:'Varela Round', sans-serif;
+	font-weight:bold;
+	background-color: aliceblue;
+	font-size: 20px;
+}
+
+.div-nosotros{
+	margin-top: 30px;
+}
+
+.nos{
+	margin-top: 30px;
+	width: 400px;
+}
+
+.nav{
+	font-family: 'Chewy', cursive;
+}
+
+.style-comentario{
+	border-radius: 15px; 
+	border:solid;
+	background-color: #45b39d;
+}
+
+.icon-displayed {
+	margin-top: auto;
+	margin-bottom: auto 
+}
+
+.borde-solid{
+	border:solid;
+}
+
+.card-h {
+	height: 500px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.btn-verevento{
+	font-size: 20px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border-radius: 10px;
+}
+
+.bienvenida{
+    margin-top: 6px;
+	float:left;
+	text-align: center;
+    font-family: 'Baloo Tammudu 2', cursive;
+	color: white;
+	font-size: 25px;
+}
+
+.bienvenida-user{
+    margin-top: 25px;
+	text-align: center;
+    font-family: 'Baloo Tammudu 2', cursive;
+	font-size: 25px;
+	color: #45b39d;
+}

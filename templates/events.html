@@ -1,0 +1,71 @@
+{% extends 'header-footer.html' %}
+
+{% from "macro.html" import show_event %}
+{% from "form_macros.html" import show_field, show_field_submit %}
+{% block content %}
+
+<div class="container-fluid">
+<div style="background-color:black;">
+  <form method="POST" action="{{ url_for('index', _anchor='filter') }}" enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <div class="row">
+      <div class="col-md-2" style="margin-left: 200px; color: aliceblue; text-align: center;">
+        {{ show_field(filter.type , class='form-control') }}
+      </div>
+      <div class="col-md-2" style="margin-left: 100px; color: aliceblue; text-align: center;">
+        {{ show_field(filter.date, class='form-control' )}}
+      </div>
+      <div class="col-md-2" style="margin-left: 100px; color: aliceblue; text-align: center;">
+        {{ show_field(filter.title, class='form-control' )}}
+      </div>
+      <div class="col-md-2" style="margin-top: 15px; text-align: center;">
+        {{ show_field_submit(filter.submit, class='btn btn-outline-light')}}
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div class="row">
+  {% if(destination == " filter") %}
+
+  {% for event in event_list %}
+  {{ show_event(event)}}
+  {% endfor %}
+
+  {% else %}
+
+  {% for event in events.items %}
+  {{ show_event(event)}}
+  {% endfor %}
+
+  {% endif %}
+</div>
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    {% if events.has_prev %}
+    <li class="page-item">
+      <a class="page-link" href="{{ url_for('index', pag=events.prev_num) }}" tabindex="-1">Previous</a>
+    </li>
+    {% endif %}
+
+    {% for i in range(1,(events.pages+1)) %}
+    {% if events.page == i %}
+    <li class="page-item active"><a class="page-link">{{i}}</a></li>
+    {% else %}
+    <li class="page-item"><a class="page-link" href="{{ url_for('index', pag=i) }}">{{i}}</a></li>
+    {% endif %}
+    {% endfor %}
+
+    {% if events.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="{{ url_for('index', pag=events.next_num) }}">Next</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+
+</div>
+{% endblock %}

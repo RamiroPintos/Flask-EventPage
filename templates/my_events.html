@@ -1,0 +1,8 @@
+{% extends 'header-footer.html' %}
+{% block content %}
+{% from "macro.html" import my_events %}
+
+{% for event in event_list %}
+{{ my_events(event)}}
+{% endfor %}
+{% endblock %}

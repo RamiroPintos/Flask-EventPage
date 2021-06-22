@@ -1,0 +1,37 @@
+{% extends 'header-footer.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 div-nosotros">
+            <img class="imagen-form" src={{ url_for( 'static' , filename="images/logo.jpg" )}} alt="logo">
+            <div class="center style-comentario text-nosotros about">
+                <p>Ingresa tu evento en nuestra página y todo el mundo asistirá</p>
+                <span><img src={{ url_for( 'static' , filename="images/checkmark.svg" )}} alt="categoria.svg">100%
+					gratis</span>
+                <br></br>
+                <span><img src={{ url_for( 'static' , filename="images/checkmark.svg" )}} alt="categoria.svg">Fácil de
+					usar</span>
+                <br></br>
+                <span><img src={{ url_for( 'static' , filename="images/checkmark.svg" )}} alt="categoria.svg">Asistencia
+					personal</span>
+                <br></br>
+                <span><img src={{ url_for( 'static' , filename="images/checkmark.svg" )}} alt="categoria.svg">Eventos de
+					todo tipo</span>
+                <br></br>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-4 div-nosotros center">
+            <div class="text-nosotros style-comentario">
+                <h5 class="h5"><b>OPINIONES DE CLIENTES</b></h5>
+                <p>"La fiesta estuvo increíble, todo fue genial. ¡Encontramos el evento gracias a la pagina!".
+                    <i>Amanda</i></p>
+                <p>“Quiero agradecerles a todos la ayuda en el lanzamiento de mi evento. Todo estuvo genial y recibí
+                    muchos cumplidos”. <i>Susana</i></p>
+                <p>“La página más profesional que eh usado jamás. Sencillamente el mejor”. <i>Lucas</i></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'header-footer.html' %}
+{% from "form_macros.html" import show_field,show_field_radius, show_field_submit %}
+{% block content %}
+
+<div class="container-fluid">
+<div class="form-group">
+    
+  {% if(destination=="update_event")%}
+  <form method="POST" action="{{ url_for('update_event', id = event["eventId"]) }}" enctype="multipart/form-data">
+  {% else %}
+  <form method="POST" action="{{ url_for('event_register') }}" enctype="multipart/form-data">
+  {% endif %}
+  
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <div class="row altura">
+      <div class="col-md-2"></div>
+      <div class="col-md-4 fondo-n">
+        <div class="text-color">
+          <h1 class="text-fonttit center">COMENCEMOS</h1>
+          <div class="form-group col-md-12 center text-fontnorm">
+            {{ show_field(form.title, class='form-control' )}}
+          </div>
+          <div class="form-group col-md-12 center text-fontnorm">
+            {{ show_field(form.date, class='form-control' )}}
+          </div>
+          <div class="form-group col-md-12 center text-fontnorm">
+            {{ show_field(form.time, class='form-control' )}}
+          </div>
+          <div class="form-group col-md-12 center text-fontnorm">
+            {{ show_field(form.place, class='form-control' )}}
+          </div>
+          <div class="form-group col-md-12 center text-fontnorm">
+            {{ show_field(form.type , class='form-control')}}
+          </div>
+          <div class="form-group col-md-12 center text-fontnorm">
+            {{ show_field(form.description , class='form-control')}}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 fondo-b center">
+        <div class="center text-fontnorm">
+          <h1>Ingresa una imagen</h1>
+          <br></br>
+          {{ show_field(form.image , class='form-control')}}
+        </div>
+        <br></br>
+        <div class="center" style="padding-top: 50px;">
+          <br></br>
+          {{ show_field_submit(form.submit , class='btn btn-success')}}
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </form>
+</div>
+</div>
+{% endblock %}

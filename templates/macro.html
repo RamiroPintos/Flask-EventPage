@@ -1,0 +1,111 @@
+
+{% macro list_user(user) %}
+
+<tr>
+  <th scope="row" style="width: 390px">
+    <a href="{{ url_for('show_userList', id = user["userId"]) }}" class="evento-tabla">{{user["userId"]}}</a>
+  </th>
+  <td style="width: 600px">{{user["name"]}} | {{user["lastname"]}}</td>
+  <td style="width: 600px">{{user["user"]}}</td>
+  <td style="width: 600px">{{user["email"]}}</td>
+
+  <td style="width: 100px">
+
+    <a href="{{url_for('deleteUserById', id = user["userId"]) }}"><button type="button"
+        class="btn btn-danger">Eliminar</button></a>
+
+  </td>
+</tr>
+
+{% endmacro %}
+
+
+{% macro show_event(event) %}
+
+<div class="col-md-4">
+    <div class="card card-h text-white bg-dark">
+        <img class="card-img-top" style="height: 200px;" src="{{url_for('static', filename = 'images/'+event.image )}}"
+             alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title fondos center" style="border-radius: 10px;">{{event["title"]}}</h5>
+            <p class="card-text">{{event["description"]}}</p>
+        </div>
+        <div class="card-footer text-center">
+            <small class="text-light" style="margin-right: 30px;"> Fecha: {{event["date"]}}</small>
+            <small class="text-light" style="margin-right: 30px;"> Hora: {{event["time"]}}</small>
+            <small class="text-light"> Lugar: {{event["place"]}}</small>
+        </div>
+        <div class="center">
+            <a class="center" href="{{ url_for('show_event' , id = event["eventId"]) }}"><button type="submit"
+            class="btn-light btn-verevento">Ver</button></a>
+        </div>
+    </div>
+</div>
+{% endmacro %}
+
+
+{% macro my_events(event) %}
+
+<div class="row eventos fondo-eventos redondeo">
+    <div class="col-md-3 center altura-center text-color">
+        <div>
+            <h3 style="color: azure;">{{event["title"]}}</h3>
+        </div>
+    </div>
+    <div class="col-md-6 center altura-center div-eventos" style="font-size: 20px;">
+        <div>
+      <a href="{{ url_for('show_event', id = event["eventId"]) }}"><button type="submit" class="btn-azul">Ver
+          más</button></a>
+      <a href="{{url_for('update_event', id = event["eventId"]) }}"><button type="submit"
+          class="btn-azul">Modificar</button></a>
+      <a href="{{url_for('deleteById', id = event["eventId"]) }}"><button type="submit"
+          class="btn-azul">Eliminar</button></a>
+    </div>
+    </div>
+    <div class="col-md-3 altura-center text-estado" style="text-align: center !important;">
+        {% if event["status"] == 1 %}
+
+        <div style="color: green"> Aprobado</div>
+
+        {% else %}
+        <div style="color: red"> Pendiente</div>
+
+        {% endif %}
+    </div>
+</div>
+{% endmacro %}
+
+{% macro show_comment(comment) %}
+<p></p>
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading">{{comment["user"]}}</div>
+        <div class="panel-body">{{comment["text"]}}</div>
+    </div>
+</div>
+{% endmacro %}
+
+{% macro request_events(event) %}
+
+<tr>
+  <th scope="row" style="width: 390px"> <a href="{{ url_for('show_event', id = event["eventId"]) }}"
+      class="evento-tabla"> {{event["title"]}} </a></th>
+  <td style="width: 180px">{{event["date"]}} | {{event["time"]}}</td>
+  <td>{{event["place"]}}</td>
+
+  <td>{{event["type"]}}</td>
+
+
+  <td style="width: 280px">
+
+    <a href="{{ url_for('show_event', id = event["eventId"]) }}" target="_blank"><button type="button"
+        class="btn btn-secondary"> Ver </button></a>
+    <a href="{{url_for('approveById', id = event["eventId"]) }}"><button type="button" class="btn btn-success">Aprobar
+      </button></a>
+    <a href="{{url_for('deleteById', id = event["eventId"]) }}"><button type="button"
+        class="btn btn-danger">Rechazar </button></a>
+
+  </td>
+</tr>
+
+{% endmacro %}

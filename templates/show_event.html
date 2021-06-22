@@ -1,0 +1,102 @@
+    {% extends 'header-footer.html' %}
+
+    {% block content %}
+
+    {% from "macro.html" import show_comment %}
+
+    <div class="container-fluid">
+      <div class="card-deck text-fontnorm">
+        <div class="card">
+          <img style="height: 400px; width: 600px; margin-left: auto; margin-right: auto;"
+            src="{{url_for('static', filename = 'images/'+event.image )}}" class="card-img-top">
+          <div class="card-body">
+            <h3 class="card-title style-comentario center">{{event["title"]}}</h3>
+            <div>
+              <span>
+                <img src={{ url_for( 'static' , filename="images/category.svg" )}}
+                  alt="categoria.svg">{{event["type"]}}
+                <img src={{ url_for( 'static' , filename="images/calendar.svg" )}} alt="fecha.svg">{{event["date"]}}
+                <img src={{ url_for( 'static' , filename="images/time.svg" )}} alt="hora.svg">{{event["time"]}}
+                <img src={{ url_for( 'static' , filename="images/location.svg" )}} alt="lugar.svg">{{event["place"]}}
+              </span>
+            </div>
+            <p></p>
+            <div>
+              <p class="card-text">{{event["description"]}}</p>
+            </div>
+          </div>
+          <div class="row">
+
+            <div class="col-md-11">
+              <p></p>
+              <h6 style="text-decoration-line: underline; font-size: 20px;">Comentarios:</h6>
+              <p></p>
+
+
+              {% for comment in comment_list %}
+              {{show_comment(comment)}}
+
+              {% if current_user.is_authenticated %}
+
+              {% if current_user.is_admin() or current_user.is_owner(comment) %}
+              <a href="{{url_for('deleteCommentById', id = comment["commentId"]) }}"><button type="button"
+                  class="btn btn-outline-danger">Borrar</button></a>
+              {% endif %}
+
+              {% endif %}
+
+              {% endfor %}
+
+            </div>
+          </div>
+
+          {% if current_user.is_authenticated %}
+
+          <div class="col-md-1" style="text-align: center; margin: 20px;">
+            <button type="button" class="btn btn btn-secundario btn-outline-info" data-toggle="modal"
+              data-target="#modal_comment" style="background-color: rgb(61, 39, 189); color: white;">
+              Comentar
+            </button>
+          </div>
+
+          {% endif %}
+
+          <div class="modal fade" id="modal_comment" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+            <div class="modal-dialog modal-dialog-centered modalcoment1" role="document">
+
+              <form method="POST" action="{{ url_for('show_event', id=event["eventId"]) }}"
+                enctype="multipart/form-data">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+                <div class="modal-content modalcoment2">
+                  <div class="modal-header">
+                    <h3 class="modal-title modaltitulo" id="exampleModalCenterTitle" style="text-align: center;">
+                      Comentar Evento</h3>
+                    <button type="button" class="closebtn" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true" class="ekis">&times;</span>
+                    </button>
+                  </div>
+
+                  <div class="modal-body">
+
+                    {{ show_field(form.comment, class='form-control', style="width: 490px; height: 170px" )}}
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    {{ show_field_submit(form.submit , class='btn btn-primario')}}
+                  </div>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+    {% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'header-footer.html' %}
+<!--Import macros -->
+{% from "form_macros.html" import show_field,show_field_radio, show_field_submit %}
+{% block content %}
+<div class="form-group">
+  <form method="POST" action="{{ url_for('user_register') }}" enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <div class="row altura">
+      <div class="col-md-2"></div>
+      <div class="col-md-4 fondo-n">
+        <div class="text-color">
+          <h1 class="text-fonttit center">REGISTRO</h1>
+          <div class="form-group col-md-12 center text-fontnorm">
+            {{ show_field(form.email, class='form-control' )}}
+          </div>
+          <div class="form-group col-md-12 center text-fontnorm">
+            {{ show_field(form.user, class='form-control' )}}
+          </div>
+          <div class="form-group col-md-12 center text-fontnorm">
+            {{ show_field(form.name, class='form-control' )}}
+          </div>
+          <div class="form-group col-md-12 center text-fontnorm">
+            {{ show_field(form.lastname, class='form-control' )}}
+          </div>
+          <div class="form-group col-md-12 center text-fontnorm">
+            {{ show_field(form.password, class='form-control' )}}
+          </div>
+          <div class="form-group col-md-12 center text-fontnorm">
+            {{ show_field(form.confirm , class='form-control')}}
+          </div>
+          <div class="form-group col-md-12 center text-fontnorm">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 fondo-b center">
+        <br></br>
+        <div class="center" style="padding-top: 50px;">
+          <br></br>
+          {{ show_field_submit(form.submit , class='btn btn-success')}}
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}

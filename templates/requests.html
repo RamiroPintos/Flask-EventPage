@@ -1,0 +1,32 @@
+{% extends 'header-footer.html' %}
+{% block content %}
+{% from "macro.html" import request_events %}
+
+<div class="container-fluid" style="margin-top: 5px;">
+<div class="table-responsive">
+<table class="table table-striped table-dark">
+  <thead style="color: orangered">
+    <tr>
+      <th scope="col">Titulo</th>
+      <th scope="col">Fecha y Hora</th>
+      <th scope="col">Lugar</th>
+      <th scope="col">Categoria</th> 
+      <th scope="col" style="text-align: center">Accion</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for event in event_list %}
+
+    {{ request_events(event)}}
+
+    {% endfor %}
+
+
+  </tbody>
+</table>
+</div>
+
+</div>
+
+{% endblock %}

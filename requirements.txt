@@ -1,0 +1,13 @@
+sqlalchemy
+Flask
+wheel
+Flask-SQLAlchemy
+itsdangerous
+Jinja2
+PyMySQL
+Werkzeug
+flask_wtf
+flask_mail
+flask_login
+wtforms_components
+python-dotenv

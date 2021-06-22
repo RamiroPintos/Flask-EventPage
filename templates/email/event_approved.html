@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <title>Event Aprobado</title>
+</head>
+
+<body style="background-image: url(https://designshack.net/wp-content/uploads/background-design-trends.jpg);background-repeat: no-repeat;
+background-size:cover;">
+<br></br>
+<h1 style="color: black">Event aprobado</h1>
+
+<b style="color: orangered"> {{ event.name }} </b>
+<br></br>
+<p style="color: black"> Tu evento {{ event.name }} del {{ event.date.strftime("%d %B, %Y") }} ha sido
+    recientemente aprobado en nuestra pagina y ya se encuentra disponible
+</p>
+
+<p> Disfrute de nuestro servicio.</p>
+<p> NDEAAH Eventos </p>
+
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+.idea/
+.venv
+venv
+pyvenv.cfg
+/__pycache__
+logfile
+mail_logfile
+/static/images
+
