@@ -11,7 +11,7 @@ load_dotenv(override=True)
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://' + os.getenv('DB_CONNECTION') + '@localhost/db_test'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://' + os.getenv('DB_CONNECTION') + '@localhost/mydb'
 db = SQLAlchemy(app)
 # Mail settings
 app.config['MAIL_HOSTNAME'] = 'localhost'
