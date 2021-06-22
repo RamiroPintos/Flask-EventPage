@@ -52,8 +52,7 @@ def apiShowEvents():
 
 
 # Update Event
-# curl -i -X PUT -H "Content-Type:application/json" -H "Accept:application/json" http://localhost:5000/api/evento/136
-# -d '{"title":"", "type":""}'
+# curl -i -X PUT -H "Content-Type:application/json" -H "Accept:application/json" http://localhost:5000/api/evento/id -d '{"title":"", "type":""}'
 @app.route('/api/event/<id>', methods=['PUT'])
 @csrf.exempt
 def apiUpdateEvent(id):
