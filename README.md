@@ -69,7 +69,7 @@ curl -H "Accept:application/json" http://localhost:5000/api/event/
 
 PUT:
 ```
-curl -i -X PUT -H "Content-Type:application/json" -H "Accept:application/json" http://localhost:5000/api/evento/id -d '{"title":"", "type":""}'
+curl -i -X PUT -H "Content-Type:application/json" -H "Accept:application/json" http://localhost:5000/api/event/id -d '{"title":"", "type":""}'
 ```
 
 Delete:
