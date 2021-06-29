@@ -15,7 +15,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://' + os.getenv('DB_CONNE
 db = SQLAlchemy(app)
 # Mail settings
 app.config['MAIL_HOSTNAME'] = 'localhost'
-app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
@@ -26,10 +26,6 @@ email = Mail(app)  # Mail initialize
 login_manager = LoginManager(app)
 csrf = CSRFProtect(app)
 app.secret_key = os.urandom(24)
-
-
-def admin_required():
-    return current_user.es_admin()
 
 
 if __name__ == '__main__':

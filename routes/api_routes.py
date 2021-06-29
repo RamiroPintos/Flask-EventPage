@@ -17,7 +17,7 @@ def apiGetUserById(id):
 # Show all Users
 # curl -H "Accept:application/json" http://localhost:5000/api/users
 @app.route('/')
-@app.route('/api/users/', methods=['GET'])
+@app.route('/api/users', methods=['GET'])
 def apiShowUsers():
     users_list = list_user()
     return jsonify({'users': [user.to_json() for user in users_list]})
@@ -43,16 +43,16 @@ def apiGetEventById(id):
 
 
 # Show all Events
-# curl -H "Accept:application/json" http://localhost:5000/api/event/
+# curl -H "Accept:application/json" http://localhost:5000/api/events
 @app.route('/')
-@app.route('/api/event/', methods=['GET'])
+@app.route('/api/events', methods=['GET'])
 def apiShowEvents():
     event_list = show_events()
     return jsonify({'events': [event.to_json() for event in event_list]})
 
 
 # Update Event
-# curl -i -X PUT -H "Content-Type:application/json" -H "Accept:application/json" http://localhost:5000/api/evento/id -d '{"title":"", "type":""}'
+# curl -i -X PUT -H "Content-Type:application/json" -H "Accept:application/json" http://localhost:5000/api/event/id -d '{"title":"", "place":""}'
 @app.route('/api/event/<id>', methods=['PUT'])
 @csrf.exempt
 def apiUpdateEvent(id):

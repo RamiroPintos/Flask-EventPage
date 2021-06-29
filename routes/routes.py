@@ -31,7 +31,7 @@ def index(pag=1):
     filter = Filter()
     login_form = LoginForm()
     title = "Home"
-    pag_size = 2
+    pag_size = 3
     event_list = show_events()
 
     events = event_list.filter(Event.status == 1).order_by(Event.date).paginate(pag, pag_size, error_out=False)
@@ -60,7 +60,7 @@ def my_events():
     title = "Mis eventos"
     event_list = show_myevents(current_user.userId)
 
-    return render_template('my_events.html', event_list=event_list)
+    return render_template('my_events.html', title=title, event_list=event_list)
 
 
 @app.route('/show-event/<id>', methods=["POST", "GET"])
@@ -71,6 +71,7 @@ def show_event(id):
     if event.status == 1 or has_permission(current_user, event):
 
         form = CommentLog()
+        title = "Evento - " + event.title
         comment_list = show_comments(id)
 
         if form.is_submitted():
@@ -84,7 +85,7 @@ def show_event(id):
                 return redirect(url_for('show_event', id=id, login_form=login_form))
             else:
                 flash('No se pudo comentar el evento', 'danger')
-        return render_template('show_event.html', event=event, form=form,
+        return render_template('show_event.html', event=event, form=form, title=title,
                                comment_list=comment_list, id=id, login_form=login_form)
     else:
         return redirect(url_for('index'))
@@ -125,6 +126,7 @@ def user_register():
 @app.route('/create-event', methods=["POST", "GET"])
 @login_required
 def event_register():
+    title = "Nuevo Evento"
     form = EventRegister()
 
     if form.validate_on_submit():
@@ -140,12 +142,13 @@ def event_register():
         db.session.commit()
         return redirect(url_for('index'))
 
-    return render_template('event_form.html', form=form, destination="event_register")
+    return render_template('event_form.html', title=title, form=form, destination="event_register")
 
 
 @app.route('/update-event/<int:id>', methods=["POST", "GET"])
 @login_required
 def update_event(id):
+    title = "Editar evento"
     event = get_event(id)
     if has_permission(current_user, event):
 
@@ -175,7 +178,7 @@ def update_event(id):
             db.session.commit()
             return redirect(url_for('my_events'))
 
-        return render_template('event_form.html', form=form, destination="update_event",
+        return render_template('event_form.html', title=title, form=form, destination="update_event",
                                event=event)
     else:
         return redirect(url_for('index'))

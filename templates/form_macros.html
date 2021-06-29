@@ -1,8 +1,8 @@
 <!-- Macro that is responsible for displaying validation errors -->
 {% macro show_error(field) %}
-	{% if field.errors %} <!--Si exist errors -->
+	{% if field.errors %} <!--If exist errors -->
 	  <div class="alert alert-danger" role="alert">
-	  {% for error in field.errors %} <!--go through errors-->
+	  {% for error in field.errors %} <!--Go through errors-->
 	   	{{ error }}<br><!--Show error -->
 	  {% endfor %}
 	  </div>

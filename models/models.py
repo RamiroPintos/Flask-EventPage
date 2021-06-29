@@ -123,6 +123,7 @@ class Comment(db.Model):
     userId = db.Column(db.Integer, db.ForeignKey('user.userId'), nullable=False)
     eventId = db.Column(db.Integer, db.ForeignKey('event.eventId'), nullable=False)
     text = db.Column(db.String(500), nullable=False)
+
     user = db.relationship("User", back_populates="comments")
     event = db.relationship("Event", back_populates="comments")
 
@@ -130,7 +131,7 @@ class Comment(db.Model):
     def to_json(self):
         comment_json = {
             'commentId': url_for('apiGetCommentById', id=self.commentId, _external=True),
-            'user': self.user.user + ' ' + self.user.lastname,
+            'user': self.user.user,
             'text': self.text,
             'event': url_for('apiGetEventById', id=self.eventId, _external=True)
         }
